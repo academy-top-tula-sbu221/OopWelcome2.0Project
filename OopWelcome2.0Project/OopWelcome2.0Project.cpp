@@ -122,6 +122,19 @@ public:
     }
 };
 
+
+void func(int& value)
+{
+    std::cout << "l value " << value << "\n";
+}
+
+void func(int&& value)
+{
+    std::cout << "r value " << value << "\n";
+}
+
+
+
 int main()
 {
     {
@@ -162,5 +175,14 @@ int main()
     std::cout << cf2.var << " " << cf3.var << "\n";
 
     Fraction::var = 300;
+
+    Fraction f1(3, 5);
+    Fraction f2(4, 7);
+
+    Fraction&& f3 = f1.Plus(f2);
+
+    int n = 100;
+    func(std::move(n));
+    func(100);
 
 }
